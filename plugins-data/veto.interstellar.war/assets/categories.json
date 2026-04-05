@@ -1,0 +1,119 @@
+[
+  {
+    "id": "ground_force.trooper",
+    "branchId": "ground_force",
+    "natoCode": "GUCI---",
+    "componentGroups": [
+      {
+        "key": "troopers",
+        "types": ["standard", "power_armor", "cyber_enhanced", "vanguard"],
+        "qualities": ["recruit", "veteran", "elite", "legendary"],
+        "defaultCount": 500
+      }
+    ]
+  },
+  {
+    "id": "ground_force.mech",
+    "branchId": "ground_force",
+    "natoCode": "GUCA---",
+    "componentGroups": [
+      {
+        "key": "mechs",
+        "types": ["scout_mech", "assault_mech", "heavy_mech", "titan"],
+        "qualities": ["mark1", "mark2", "mark3", "mark4", "mark5"],
+        "defaultCount": 20
+      }
+    ]
+  },
+  {
+    "id": "ground_force.energy_weapon",
+    "branchId": "ground_force",
+    "natoCode": "GUCF---",
+    "componentGroups": [
+      {
+        "key": "energy_weapons",
+        "types": ["laser_cannon", "plasma_launcher", "railgun", "orbital_strike"],
+        "qualities": ["basic", "enhanced", "overcharged", "singularity"],
+        "defaultCount": 10
+      }
+    ]
+  },
+  {
+    "id": "space_fleet.warship",
+    "branchId": "space_fleet",
+    "natoCode": "SC-----",
+    "componentGroups": [
+      {
+        "key": "warships",
+        "types": ["corvette", "destroyer", "cruiser", "dreadnought"],
+        "qualities": ["mark1", "mark2", "mark3", "mark4"],
+        "defaultCount": 1
+      }
+    ]
+  },
+  {
+    "id": "space_fleet.carrier",
+    "branchId": "space_fleet",
+    "natoCode": "SC---E-",
+    "componentGroups": [
+      {
+        "key": "carriers",
+        "types": ["light_carrier", "carrier", "assault_carrier", "supercarrier"],
+        "qualities": ["standard", "upgraded", "advanced", "flagship"],
+        "defaultCount": 1
+      }
+    ]
+  },
+  {
+    "id": "space_fleet.stealth",
+    "branchId": "space_fleet",
+    "natoCode": "UC-----",
+    "componentGroups": [
+      {
+        "key": "stealth_ships",
+        "types": ["scout", "shadow", "hunter", "phantom"],
+        "qualities": ["basic", "stealth", "deep_stealth", "ghost"],
+        "defaultCount": 1
+      }
+    ]
+  },
+  {
+    "id": "aerospace.fighter",
+    "branchId": "aerospace",
+    "natoCode": "AMF----",
+    "componentGroups": [
+      {
+        "key": "fighters",
+        "types": ["interceptor", "dogfighter", "strike", "ace"],
+        "qualities": ["gen1", "gen2", "gen3", "gen4"],
+        "defaultCount": 12
+      }
+    ]
+  },
+  {
+    "id": "aerospace.bomber",
+    "branchId": "aerospace",
+    "natoCode": "AMB----",
+    "componentGroups": [
+      {
+        "key": "bombers",
+        "types": ["tactical", "strategic", "stealth", "orbital"],
+        "qualities": ["standard", "advanced", "precision", "devastator"],
+        "defaultCount": 4
+      }
+    ]
+  },
+  {
+    "id": "aerospace.support",
+    "branchId": "aerospace",
+    "natoCode": "AMQ----",
+    "componentGroups": [
+      {
+        "key": "support_craft",
+        "types": ["recon", "electronic_warfare", "transport", "command"],
+        "qualities": ["basic", "standard", "advanced", "specialized"],
+        "defaultCount": 2
+      }
+    ]
+  }
+]
