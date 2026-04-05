@@ -1,11 +1,11 @@
 [
   {
-    "id": "veto.modern.war",
-    "name": "现代战争基础包",
+    "id": "veto.interstellar.war",
+    "name": "星际战争基础包",
     "author": "Miaoyww",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "type": "faction",
-    "description": "包含现代陆海空三军基础单位模板，作为其他现代题材 Mod 的依赖库。",
+    "description": "包含星际地面突击队、星际舰队、航天战队三军基础单位模板，作为其他星际题材 Mod 的依赖库。",
     "min_engine_version": ">=1.0.0",
     "definitions": "definitions.json",
     "i18n": {
@@ -13,12 +13,12 @@
     },
     "dependencies": [],
     "license": "GPL-3.0",
-    "update_time": 1775383366,
+    "update_time": 1775387267,
     "publish_time": 1775378962,
-    "repo": "VetoExpress/veto-modern-war",
-    "stars": 1,
-    "download_url": "https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/dist/vmods/veto.modern.war.vmod",
-    "hash": "65b9cbefa0518caddced7a6ee92013b80c4494b3ae84ee82d0777735e8fcab13",
-    "filesize": 18893
+    "repo": "",
+    "stars": 0,
+    "download_url": "https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/dist/vmods/veto.interstellar.war.vmod",
+    "hash": "4cafc3a0c4e93efd3edc991a51bb597fafd60913f9c87419dae027fc6470df4e",
+    "filesize": 19274
   }
 ]
