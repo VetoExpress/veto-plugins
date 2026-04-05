@@ -1,0 +1,24 @@
+[
+  {
+    "id": "veto.modern.war",
+    "name": "现代战争基础包",
+    "author": "Miaoyww",
+    "version": "1.0.0",
+    "type": "faction",
+    "description": "包含现代陆海空三军基础单位模板，作为其他现代题材 Mod 的依赖库。",
+    "min_engine_version": ">=1.0.0",
+    "definitions": "definitions.json",
+    "i18n": {
+      "zh-CN": "i18n/zh-CN.json"
+    },
+    "dependencies": [],
+    "license": "GPL-3.0",
+    "update_time": 1775378962,
+    "publish_time": 1775378962,
+    "repo": "VetoExpress/veto-modern-war",
+    "stars": 0,
+    "download_url": "https://cdn.jsdelivr.net/gh/VetoExpress/veto-plugins@main/dist/vmods/veto.modern.war.vmod",
+    "hash": "0ee1c93392bd2e7a3bc3a58b6c9ffaaca10b4bf2749adf3e643deb1bfe58ef5d",
+    "filesize": 18891
+  }
+]
