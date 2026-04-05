@@ -1,5 +1,5 @@
 [
-  { "id": "army" },
-  { "id": "navy" },
-  { "id": "air_force" }
+  { "id": "ground_force" },
+  { "id": "space_fleet" },
+  { "id": "aerospace" }
 ]
