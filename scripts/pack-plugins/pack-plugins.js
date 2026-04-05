@@ -1,7 +1,16 @@
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { execSync } from 'child_process';
+import archiver from 'archiver';
 import { getPluginList, getStarCount } from '../utils.js';
+
+const JSDELIVR_BASE = 'https://cdn.jsdelivr.net/gh/VetoExpress/veto-plugins@main/dist';
+
+const PACK_EXCLUDES = [
+	'.git/**', '.github/**', 'node_modules/**',
+	'README.md', 'README.MD', 'README.txt', 'README.TXT',
+];
 
 const compulsoryFields = ['id', 'name', 'author', 'version', 'type'];
 const optionalFields = [
@@ -26,13 +35,32 @@ const checkCompulsoryFields = (json, pluginId) => {
 	return true;
 };
 
+const packToVmod = (srcDir, destFile) => new Promise((resolve, reject) => {
+	const output = fs.createWriteStream(destFile);
+	const archive = archiver('zip', { zlib: { level: 9 } });
+	output.on('close', resolve);
+	archive.on('error', reject);
+	archive.pipe(output);
+	archive.glob('**/*', { cwd: srcDir, ignore: PACK_EXCLUDES, dot: false });
+	archive.finalize();
+});
+
+const computeSha256 = (filePath) => {
+	const hash = crypto.createHash('sha256');
+	hash.update(fs.readFileSync(filePath));
+	return hash.digest('hex');
+};
+
+// Setup dist directories
+const distPath = path.resolve(process.cwd(), '../../dist');
+const vmodsPath = path.join(distPath, 'vmods');
+const previewsPath = path.join(distPath, 'previews');
+for (const dir of [distPath, vmodsPath, previewsPath]) {
+	fs.mkdirSync(dir, { recursive: true });
+}
+
 const definedPluginList = getPluginList();
 const starCount = getStarCount();
-
-const distPath = path.resolve(process.cwd(), '../../dist');
-if (!fs.existsSync(distPath)) {
-	fs.mkdirSync(distPath, { recursive: true });
-}
 
 !(async () => {
 	const pluginList = [];
@@ -41,7 +69,9 @@ if (!fs.existsSync(distPath)) {
 	for (const plugin of plugins) {
 		if (plugin.startsWith('.')) continue;
 
-		const manifestPath = path.resolve(process.cwd(), `../../plugins-data/${plugin}/manifest.json`);
+		const pluginSrcPath = path.resolve(process.cwd(), `../../plugins-data/${plugin}`);
+		const manifestPath = path.join(pluginSrcPath, 'manifest.json');
+
 		if (!fs.existsSync(manifestPath)) {
 			console.log(`❌ Plugin ${plugin} has no manifest.json.`);
 			continue;
@@ -69,24 +99,40 @@ if (!fs.existsSync(distPath)) {
 		addField(pluginJson, 'repo', repo);
 		addField(pluginJson, 'stars', starCount[repo] ?? 0);
 
+		// Preview: copy to dist/previews/ and update field to CDN URL
 		if (pluginJson.preview) {
 			pluginJson.preview = pluginJson.preview.replace(/^\.?[\\/]/g, '');
-			const previewAbs = path.resolve(process.cwd(), `../../plugins-data/${plugin}/${pluginJson.preview}`);
-			if (!fs.existsSync(previewAbs)) {
-				console.log(`🖼️ Preview of ${plugin} not found, ignored.`);
+			const previewSrc = path.join(pluginSrcPath, pluginJson.preview);
+			if (!fs.existsSync(previewSrc)) {
+				console.log(`🖼️  Preview of ${plugin} not found, ignored.`);
 				delete pluginJson.preview;
 			} else {
-				// Keep as a relative path; the frontend references plugins-data directly via the repo
-				pluginJson.preview = `plugins-data/${plugin}/${pluginJson.preview}`;
+				const previewExt = path.extname(pluginJson.preview) || '.png';
+				const previewFilename = `${pluginId}${previewExt}`;
+				fs.copyFileSync(previewSrc, path.join(previewsPath, previewFilename));
+				pluginJson.preview = `${JSDELIVR_BASE}/previews/${previewFilename}`;
+				console.log(`🖼️  Preview → dist/previews/${previewFilename}`);
 			}
 		}
 
+		// Pack to .vmod
+		const vmodDest = path.join(vmodsPath, `${pluginId}.vmod`);
+		process.stdout.write(`📦 Packing ${pluginId}...`);
+		await packToVmod(pluginSrcPath, vmodDest);
+
+		// Hash & size
+		const hash = computeSha256(vmodDest);
+		const filesize = fs.statSync(vmodDest).size;
+
+		addField(pluginJson, 'download_url', `${JSDELIVR_BASE}/vmods/${pluginId}.vmod`);
+		addField(pluginJson, 'hash', hash);
+		addField(pluginJson, 'filesize', filesize);
+
 		pluginList.push(pluginJson);
-		console.log(`📋 ${pluginId} ${manifest.version} added to registry.`);
+		console.log(` ✅ ${manifest.version}  ${(filesize / 1024).toFixed(1)} KB  ${hash.substring(0, 12)}…`);
 	}
 
-	const registryJson = JSON.stringify(pluginList, null, 2);
-	fs.writeFileSync(path.resolve(distPath, 'registry.json'), registryJson);
+	fs.writeFileSync(path.join(distPath, 'registry.json'), JSON.stringify(pluginList, null, 2));
 	console.log(`\n✅ dist/registry.json generated with ${pluginList.length} plugin(s).`);
 })();
 
