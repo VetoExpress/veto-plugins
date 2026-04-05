@@ -16,24 +16,23 @@ export const getPluginList = () => {
 		if (!file.endsWith('.json')) {
 			return;
 		}
-		const plugin = JSON.parse(fs.readFileSync(path.join(pluginListPath, file)));
+		const parsed = JSON.parse(fs.readFileSync(path.join(pluginListPath, file)));
+		const plugins = Array.isArray(parsed) ? parsed : [parsed];
 
-		if (!isValidPluginJson(plugin)) {
-			console.log(`❌ Invalid plugin json (Missing id or repo): ${file}`);
-			return;
-		}
-		if (!plugin.id) {
-			console.log(`❌ Missing id field: ${file}`);
-			return;
-		}
+		plugins.forEach((plugin) => {
+			if (!isValidPluginJson(plugin)) {
+				console.log(`❌ Invalid plugin json (Missing id or repo): ${file}`);
+				return;
+			}
 
-		plugin.branch = plugin.branch ?? 'main';
+			plugin.branch = plugin.branch ?? 'main';
 
-		plugin.subpath = plugin?.subpath ?? '/';
-		if (plugin.subpath.endsWith('/')) plugin.subpath = plugin.subpath.slice(0, -1);
-		if (!plugin.subpath.startsWith('/')) plugin.subpath = `/${plugin.subpath}`;
+			plugin.subpath = plugin?.subpath ?? '/';
+			if (plugin.subpath.endsWith('/')) plugin.subpath = plugin.subpath.slice(0, -1);
+			if (!plugin.subpath.startsWith('/')) plugin.subpath = `/${plugin.subpath}`;
 
-		pluginList.push(plugin);
+			pluginList.push(plugin);
+		});
 	});
 	return pluginList;
 }
