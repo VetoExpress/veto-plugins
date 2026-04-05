@@ -5,7 +5,7 @@ import { execSync } from 'child_process';
 import archiver from 'archiver';
 import { getPluginList, getStarCount } from '../utils.js';
 
-const JSDELIVR_BASE = 'https://cdn.jsdelivr.net/gh/VetoExpress/veto-plugins@main/dist';
+const GITHUB_BASE = 'https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/plugins-data/dist/vmods';
 
 const PACK_EXCLUDES = [
 	'.git/**', '.github/**', 'node_modules/**',
@@ -110,7 +110,7 @@ const starCount = getStarCount();
 				const previewExt = path.extname(pluginJson.preview) || '.png';
 				const previewFilename = `${pluginId}${previewExt}`;
 				fs.copyFileSync(previewSrc, path.join(previewsPath, previewFilename));
-				pluginJson.preview = `${JSDELIVR_BASE}/previews/${previewFilename}`;
+				pluginJson.preview = `${GITHUB_BASE}/previews/${previewFilename}`;
 				console.log(`🖼️  Preview → dist/previews/${previewFilename}`);
 			}
 		}
@@ -124,7 +124,7 @@ const starCount = getStarCount();
 		const hash = computeSha256(vmodDest);
 		const filesize = fs.statSync(vmodDest).size;
 
-		addField(pluginJson, 'download_url', `${JSDELIVR_BASE}/vmods/${pluginId}.vmod`);
+		addField(pluginJson, 'download_url', `${GITHUB_BASE}/${pluginId}.vmod`);
 		addField(pluginJson, 'hash', hash);
 		addField(pluginJson, 'filesize', filesize);
 
