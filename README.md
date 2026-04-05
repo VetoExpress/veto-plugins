@@ -57,16 +57,8 @@ Vercel 边缘网络（前端消费）
 
 在你自己的 GitHub 仓库中，确保根目录包含以下文件：
 
-```text
-your-plugin-repo/
 ├── manifest.json       # 必须通过 manifest-schema.json 校验
-├── definitions.json    # 或按规范拆分为多个文件
-├── i18n/
-│   ├── zh-CN.json
-│   └── en-US.json
-└── assets/
-    └── preview.png     # 预览图（1280×720 推荐）
-```
+
 
 ### 第二步：创建注册文件
 
@@ -110,7 +102,6 @@ your-plugin-repo/
 | `definitions` | `string \| object` | — | 单位定义 JSON 路径或多文件拆分配置 |
 | `i18n` | `string \| object` | — | 语言包路径或 `{ "zh-CN": "i18n/zh-CN.json" }` |
 | `dependencies` | `string[]` | — | 依赖的其他插件 ID 数组 |
-| `tags` | `string[]` | — | 最多 10 个标签，如 `["modern", "naval"]` |
 | `license` | `string` | — | SPDX 标识符，如 `GPL-3.0-or-later` |
 
 ### 最小合法示例
@@ -133,7 +124,6 @@ your-plugin-repo/
     "en-US": "i18n/en-US.json"
   },
   "dependencies": [],
-  "tags": ["modern", "official"],
   "license": "GPL-3.0"
 }
 ```
