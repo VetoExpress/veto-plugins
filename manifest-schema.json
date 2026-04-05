@@ -1,0 +1,168 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/manifest-schema.json",
+	"title": "CrisisSim Plugin Manifest",
+	"description": "战棋推演系统（CrisisSim / Veto）插件的元数据配置规范 v1",
+	"type": "object",
+	"required": ["manifest_version", "id", "name", "version", "author", "type"],
+	"additionalProperties": false,
+	"properties": {
+		"$schema": {
+			"type": "string",
+			"format": "uri-reference",
+			"description": "JSON Schema 的 URL 或本地路径，用于编辑器实时校验"
+		},
+		"manifest_version": {
+			"type": "integer",
+			"const": 1,
+			"description": "Manifest 格式版本，当前固定为 1"
+		},
+		"id": {
+			"type": "string",
+			"pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$",
+			"maxLength": 64,
+			"description": "插件全局唯一标识符，格式建议为 author.plugin-name（仅小写字母、数字、点、连字符、下划线）"
+		},
+		"name": {
+			"type": "string",
+			"maxLength": 64,
+			"description": "插件展示名称，支持任意 Unicode 字符"
+		},
+		"version": {
+			"type": "string",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+			"description": "插件版本，遵循 SemVer 2.0 规范（https://semver.org/lang/zh-CN/）"
+		},
+		"author": {
+			"type": "string",
+			"description": "插件主要作者名称或团队名称"
+		},
+		"author_link": {
+			"type": "string",
+			"format": "uri",
+			"description": "作者主页 URL（GitHub 主页、个人网站等）"
+		},
+		"description": {
+			"type": "string",
+			"maxLength": 512,
+			"description": "插件功能简介，将显示在插件商店列表页"
+		},
+		"preview": {
+			"type": "string",
+			"description": "预览图相对路径，相对于插件根目录（推荐 assets/preview.png，尺寸建议 1280×720）"
+		},
+		"type": {
+			"type": "string",
+			"enum": ["faction", "scenario", "ruleset", "campaign", "utility", "dependency"],
+			"description": "插件类型：faction（阵营/军种数据包）、scenario（独立剧本）、ruleset（规则集扩展）、campaign（战役/剧情模组）、utility（工具辅助）、dependency（纯依赖库，不含内容）"
+		},
+		"min_engine_version": {
+			"type": "string",
+			"description": "兼容的推演引擎（CrisisSim Engine）最低版本，支持 SemVer 范围表达式（如 >=1.2.0 <2.0.0）"
+		},
+		"definitions": {
+			"description": "单位/阵营/武器定义资产入口，可以是单一 JSON 路径（字符串）或多文件拆分配置（对象）",
+			"oneOf": [
+				{
+					"type": "string",
+					"description": "相对于插件根目录的 definitions.json 路径（单文件模式）"
+				},
+				{
+					"type": "object",
+					"description": "多文件拆分模式，各键对应相对路径",
+					"properties": {
+						"branches": {
+							"type": "string",
+							"description": "军种/兵种大系定义 JSON 路径（BranchDefinition[]）"
+						},
+						"categories": {
+							"type": "string",
+							"description": "兵种大类定义 JSON 路径（CategoryDefinition[]）"
+						},
+						"units": {
+							"type": "string",
+							"description": "单位模板定义 JSON 路径（UnitTemplate[]）"
+						},
+						"weapons": {
+							"type": "string",
+							"description": "武器系统定义 JSON 路径（WeaponDefinition[]）"
+						},
+						"terrain": {
+							"type": "string",
+							"description": "地形类型定义 JSON 路径（TerrainDefinition[]）"
+						}
+					},
+					"additionalProperties": {
+						"type": "string",
+						"description": "其他自定义定义文件的相对路径"
+					}
+				}
+			]
+		},
+		"i18n": {
+			"description": "国际化语言包配置。单语言模式填写 JSON 路径字符串；多语言模式以 BCP 47 语言标签为键（如 zh-CN、en-US），值为对应语言包文件的相对路径",
+			"oneOf": [
+				{
+					"type": "string",
+					"description": "默认语言包 JSON 路径（单语言/中文模式）"
+				},
+				{
+					"type": "object",
+					"description": "多语言模式",
+					"minProperties": 1,
+					"additionalProperties": {
+						"type": "string",
+						"description": "语言包 JSON 文件相对路径"
+					}
+				}
+			]
+		},
+		"dependencies": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$",
+				"description": "依赖插件的 id"
+			},
+			"uniqueItems": true,
+			"description": "本插件依赖的其他插件 ID 列表，注册中心会在安装本插件前自动解析并安装这些依赖"
+		},
+		"scenarios": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"description": "剧本 JSON 文件相对路径（ScenarioSnapshot）"
+			},
+			"description": "内置剧本/快照文件列表（仅 type 为 scenario 或 campaign 时适用）"
+		},
+		"assets_dir": {
+			"type": "string",
+			"default": "assets",
+			"description": "资源目录相对路径（地图底图、单位图标、音效等二进制资源），默认为 assets/"
+		},
+		"tags": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"maxLength": 32
+			},
+			"uniqueItems": true,
+			"maxItems": 10,
+			"description": "标签列表，用于商店筛选（推荐值：modern / ww2 / cold-war / sci-fi / naval / airforce / nuclear / historical）"
+		},
+		"homepage": {
+			"type": "string",
+			"format": "uri",
+			"description": "插件主页或源码仓库 URL"
+		},
+		"license": {
+			"type": "string",
+			"description": "SPDX 许可证标识符（如 GPL-3.0-or-later、MIT、CC-BY-SA-4.0）"
+		},
+		"fork_of": {
+			"type": "string",
+			"pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$",
+			"description": "若为其他插件的衍生/Fork，填写源插件的 id"
+		}
+	}
+}
