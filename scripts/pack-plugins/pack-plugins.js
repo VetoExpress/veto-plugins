@@ -5,7 +5,7 @@ import { execSync } from 'child_process';
 import archiver from 'archiver';
 import { getPluginList, getStarCount } from '../utils.js';
 
-const GITHUB_BASE = 'https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/plugins-data/dist/vmods';
+const GITHUB_BASE = 'https://raw.githubusercontent.com/VetoExpress/veto-plugins/main/dist/vmods';
 
 const PACK_EXCLUDES = [
 	'.git/**', '.github/**', 'node_modules/**',
