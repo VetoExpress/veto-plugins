@@ -2,16 +2,17 @@ name: 'Update Plugins'
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
     types: [closed]
+    paths: 'plugin-list/**'
   workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
   push:
-    branches: 
+    branches:
       - main
-    paths: "plugin-list/**"
+    paths: 'plugin-list/**'
     
 concurrency:
   group: 'update-plugins'

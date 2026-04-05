@@ -3,11 +3,12 @@ name: 'Build Registry and Push'
 on:
   workflow_dispatch:
   pull_request:
-    branches: 
+    branches:
       - main
     types: [closed]
+    paths: 'plugins-data/**'
   push:
-    branches: 
+    branches:
       - main
     paths:
       - plugins-data/**
