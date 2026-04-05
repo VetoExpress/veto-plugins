@@ -1,0 +1,93 @@
+[
+  {
+    "id": "sf-corvette-squadron",
+    "name": "护卫舰中队",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.warship",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 180, "maxOrg": 78, "softAttack": 20, "hardAttack": 45, "airAttack": 40, "defense": 25, "speed": 1200, "attackRange": 80, "hardness": 0.4 },
+    "components": {
+      "warships": [{ "id": "sf-cv-1", "type": "corvette", "quality": "mark2", "count": 4 }]
+    }
+  },
+  {
+    "id": "sf-destroyer-fleet",
+    "name": "驱逐舰编队",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.warship",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 320, "maxOrg": 82, "softAttack": 35, "hardAttack": 75, "airAttack": 60, "defense": 40, "speed": 900, "attackRange": 200, "hardness": 0.5 },
+    "components": {
+      "warships": [{ "id": "sf-dd-1", "type": "destroyer", "quality": "mark3", "count": 2 }]
+    }
+  },
+  {
+    "id": "sf-cruiser",
+    "name": "巡洋舰",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.warship",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 520, "maxOrg": 80, "softAttack": 55, "hardAttack": 110, "airAttack": 80, "defense": 65, "speed": 750, "attackRange": 350, "hardness": 0.6 },
+    "components": {
+      "warships": [{ "id": "sf-ca-1", "type": "cruiser", "quality": "mark3", "count": 1 }]
+    }
+  },
+  {
+    "id": "sf-dreadnought",
+    "name": "无畏舰",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.warship",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 980, "maxOrg": 78, "softAttack": 90, "hardAttack": 200, "airAttack": 100, "defense": 120, "speed": 500, "attackRange": 600, "hardness": 0.75 },
+    "components": {
+      "warships": [{ "id": "sf-dn-1", "type": "dreadnought", "quality": "mark4", "count": 1 }]
+    }
+  },
+  {
+    "id": "sf-light-carrier",
+    "name": "轻型母舰",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.carrier",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 500, "maxOrg": 85, "softAttack": 10, "hardAttack": 20, "airAttack": 15, "defense": 40, "speed": 800, "attackRange": 400, "hardness": 0.45 },
+    "components": {
+      "carriers": [{ "id": "sf-lc-1", "type": "light_carrier", "quality": "standard", "count": 1 }]
+    }
+  },
+  {
+    "id": "sf-assault-carrier",
+    "name": "突击母舰战斗群",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.carrier",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 1100, "maxOrg": 88, "softAttack": 20, "hardAttack": 40, "airAttack": 30, "defense": 80, "speed": 650, "attackRange": 800, "hardness": 0.55 },
+    "components": {
+      "carriers": [
+        { "id": "sf-ac-1",    "type": "assault_carrier", "quality": "flagship", "count": 1 },
+        { "id": "sf-ac-dd-1", "type": "destroyer",       "quality": "mark3",    "count": 2 }
+      ]
+    }
+  },
+  {
+    "id": "sf-scout-ship",
+    "name": "侦察舰",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.stealth",
+    "stats": { "maxHp": 120, "maxOrg": 80, "softAttack": 5, "hardAttack": 20, "airAttack": 10, "defense": 30, "speed": 1500, "attackRange": 100, "hardness": 0.3 },
+    "components": {
+      "stealth_ships": [{ "id": "sf-ss-1", "type": "scout", "quality": "stealth", "count": 2 }]
+    }
+  },
+  {
+    "id": "sf-shadow-hunter",
+    "name": "暗影猎手",
+    "branchId": "space_fleet",
+    "categoryId": "space_fleet.stealth",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 280, "maxOrg": 82, "softAttack": 25, "hardAttack": 150, "airAttack": 5, "defense": 70, "speed": 1200, "attackRange": 120, "hardness": 0.55 },
+    "components": {
+      "stealth_ships": [{ "id": "sf-sh-1", "type": "phantom", "quality": "ghost", "count": 1 }]
+    }
+  }
+]
+

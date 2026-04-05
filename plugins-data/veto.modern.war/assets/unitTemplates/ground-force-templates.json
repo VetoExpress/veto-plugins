@@ -1,0 +1,117 @@
+[
+  {
+    "id": "gf-standard-trooper",
+    "name": "标准步兵排",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.trooper",
+    "stats": { "maxHp": 90, "maxOrg": 80, "softAttack": 30, "hardAttack": 5, "airAttack": 3, "defense": 22, "speed": 6, "attackRange": 3, "hardness": 0.05 },
+    "components": {
+      "troopers": [{ "id": "gf-st-1", "type": "standard", "quality": "veteran", "count": 200 }]
+    }
+  },
+  {
+    "id": "gf-power-armor-squad",
+    "name": "动力装甲小队",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.trooper",
+    "stats": { "maxHp": 180, "maxOrg": 85, "softAttack": 55, "hardAttack": 30, "airAttack": 8, "defense": 48, "speed": 10, "attackRange": 4, "hardness": 0.55 },
+    "components": {
+      "troopers": [{ "id": "gf-pa-1", "type": "power_armor", "quality": "elite", "count": 60 }]
+    }
+  },
+  {
+    "id": "gf-cyber-battalion",
+    "name": "赛博增强营",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.trooper",
+    "stats": { "maxHp": 140, "maxOrg": 90, "softAttack": 48, "hardAttack": 15, "airAttack": 6, "defense": 35, "speed": 8, "attackRange": 4, "hardness": 0.2 },
+    "components": {
+      "troopers": [{ "id": "gf-cb-1", "type": "cyber_enhanced", "quality": "elite", "count": 300 }]
+    }
+  },
+  {
+    "id": "gf-vanguard-company",
+    "name": "先锋特战队",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.trooper",
+    "stats": { "maxHp": 120, "maxOrg": 95, "softAttack": 65, "hardAttack": 20, "airAttack": 10, "defense": 40, "speed": 12, "attackRange": 5, "hardness": 0.15 },
+    "components": {
+      "troopers": [{ "id": "gf-vg-1", "type": "vanguard", "quality": "legendary", "count": 80 }]
+    }
+  },
+  {
+    "id": "gf-scout-mech",
+    "name": "侦察机甲队",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.mech",
+    "stats": { "maxHp": 200, "maxOrg": 78, "softAttack": 25, "hardAttack": 55, "airAttack": 12, "defense": 40, "speed": 80, "attackRange": 5, "hardness": 0.65 },
+    "components": {
+      "mechs": [{ "id": "gf-sm-1", "type": "scout_mech", "quality": "mark2", "count": 8 }]
+    }
+  },
+  {
+    "id": "gf-assault-mech",
+    "name": "突击机甲群",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.mech",
+    "stats": { "maxHp": 380, "maxOrg": 75, "softAttack": 30, "hardAttack": 130, "airAttack": 20, "defense": 80, "speed": 55, "attackRange": 4, "hardness": 0.88 },
+    "components": {
+      "mechs": [{ "id": "gf-am-1", "type": "assault_mech", "quality": "mark3", "count": 5 }]
+    }
+  },
+  {
+    "id": "gf-titan-mech",
+    "name": "泰坦机甲",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.mech",
+    "stats": { "maxHp": 600, "maxOrg": 70, "softAttack": 20, "hardAttack": 220, "airAttack": 35, "defense": 130, "speed": 30, "attackRange": 6, "hardness": 0.95 },
+    "components": {
+      "mechs": [{ "id": "gf-ti-1", "type": "titan", "quality": "mark4", "count": 1 }]
+    }
+  },
+  {
+    "id": "gf-laser-battery",
+    "name": "激光炮阵地",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.energy_weapon",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 70, "maxOrg": 72, "softAttack": 15, "hardAttack": 80, "airAttack": 60, "defense": 12, "speed": 15, "attackRange": 8, "hardness": 0.1 },
+    "components": {
+      "energy_weapons": [{ "id": "gf-lb-1", "type": "laser_cannon", "quality": "enhanced", "count": 4 }]
+    }
+  },
+  {
+    "id": "gf-plasma-launcher",
+    "name": "等离子发射营",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.energy_weapon",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 65, "maxOrg": 70, "softAttack": 100, "hardAttack": 120, "airAttack": 10, "defense": 8, "speed": 12, "attackRange": 20, "hardness": 0.08 },
+    "components": {
+      "energy_weapons": [{ "id": "gf-pl-1", "type": "plasma_launcher", "quality": "overcharged", "count": 3 }]
+    }
+  },
+  {
+    "id": "gf-railgun-battery",
+    "name": "轨道炮阵地",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.energy_weapon",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 80, "maxOrg": 68, "softAttack": 80, "hardAttack": 200, "airAttack": 0, "defense": 10, "speed": 8, "attackRange": 80, "hardness": 0.12 },
+    "components": {
+      "energy_weapons": [{ "id": "gf-rg-1", "type": "railgun", "quality": "overcharged", "count": 2 }]
+    }
+  },
+  {
+    "id": "gf-orbital-strike-unit",
+    "name": "轨道打击队",
+    "branchId": "ground_force",
+    "categoryId": "ground_force.energy_weapon",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 50, "maxOrg": 65, "softAttack": 250, "hardAttack": 300, "airAttack": 0, "defense": 5, "speed": 5, "attackRange": 500, "hardness": 0.1 },
+    "components": {
+      "energy_weapons": [{ "id": "gf-os-1", "type": "orbital_strike", "quality": "singularity", "count": 1 }]
+    }
+  }
+]
+
