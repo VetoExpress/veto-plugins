@@ -17,6 +17,9 @@ concurrency:
   group: 'pack-and-push'
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   BuildAndPush:
     if: (github.event_name == 'pull_request' && github.event.pull_request.merged) || github.event_name == 'workflow_dispatch' || github.event_name == 'push'

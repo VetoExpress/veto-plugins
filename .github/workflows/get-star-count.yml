@@ -13,6 +13,9 @@ concurrency:
   group: 'get-star-count'
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   UpdateStarCount:
     runs-on: ubuntu-latest

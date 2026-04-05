@@ -18,6 +18,10 @@ concurrency:
   group: 'update-plugins'
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   UpdatePlugins:
     runs-on: ubuntu-latest
