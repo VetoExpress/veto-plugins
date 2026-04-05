@@ -1,0 +1,106 @@
+[
+  {
+    "id": "as-interceptor-wing",
+    "name": "拦截机中队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.fighter",
+    "stats": { "maxHp": 75, "maxOrg": 80, "softAttack": 3, "hardAttack": 8, "airAttack": 95, "defense": 22, "speed": 3500, "attackRange": 300, "hardness": 0.05 },
+    "components": {
+      "fighters": [{ "id": "as-int-1", "type": "interceptor", "quality": "gen3", "count": 16 }]
+    }
+  },
+  {
+    "id": "as-dogfighter-squadron",
+    "name": "格斗战机中队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.fighter",
+    "stats": { "maxHp": 85, "maxOrg": 85, "softAttack": 8, "hardAttack": 15, "airAttack": 105, "defense": 28, "speed": 3000, "attackRange": 250, "hardness": 0.05 },
+    "components": {
+      "fighters": [{ "id": "as-df-1", "type": "dogfighter", "quality": "gen3", "count": 12 }]
+    }
+  },
+  {
+    "id": "as-strike-wing",
+    "name": "突击战机队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.fighter",
+    "stats": { "maxHp": 95, "maxOrg": 82, "softAttack": 55, "hardAttack": 70, "airAttack": 65, "defense": 25, "speed": 2800, "attackRange": 800, "hardness": 0.05 },
+    "components": {
+      "fighters": [{ "id": "as-sw-1", "type": "strike", "quality": "gen4", "count": 12 }]
+    }
+  },
+  {
+    "id": "as-ace-squadron",
+    "name": "王牌战机中队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.fighter",
+    "stats": { "maxHp": 100, "maxOrg": 90, "softAttack": 35, "hardAttack": 50, "airAttack": 120, "defense": 35, "speed": 3200, "attackRange": 600, "hardness": 0.05 },
+    "components": {
+      "fighters": [{ "id": "as-ace-1", "type": "ace", "quality": "gen4", "count": 6 }]
+    }
+  },
+  {
+    "id": "as-tactical-bomber",
+    "name": "战术轰炸机队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.bomber",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 120, "maxOrg": 76, "softAttack": 90, "hardAttack": 120, "airAttack": 12, "defense": 18, "speed": 2000, "attackRange": 2000, "hardness": 0.06 },
+    "components": {
+      "bombers": [{ "id": "as-tb-1", "type": "tactical", "quality": "advanced", "count": 8 }]
+    }
+  },
+  {
+    "id": "as-strategic-bomber",
+    "name": "战略轰炸机队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.bomber",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 160, "maxOrg": 72, "softAttack": 220, "hardAttack": 180, "airAttack": 8, "defense": 15, "speed": 1500, "attackRange": 10000, "hardness": 0.06 },
+    "components": {
+      "bombers": [{ "id": "as-stb-1", "type": "strategic", "quality": "devastator", "count": 3 }]
+    }
+  },
+  {
+    "id": "as-stealth-bomber",
+    "name": "隐身轰炸机队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.bomber",
+    "tags": ["can_strike"],
+    "stats": { "maxHp": 140, "maxOrg": 78, "softAttack": 180, "hardAttack": 200, "airAttack": 10, "defense": 25, "speed": 1800, "attackRange": 8000, "hardness": 0.06 },
+    "components": {
+      "bombers": [{ "id": "as-sb-1", "type": "stealth", "quality": "precision", "count": 4 }]
+    }
+  },
+  {
+    "id": "as-recon-flight",
+    "name": "侦察飞行队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.support",
+    "stats": { "maxHp": 55, "maxOrg": 75, "softAttack": 0, "hardAttack": 0, "airAttack": 8, "defense": 10, "speed": 3500, "attackRange": 500, "hardness": 0.04 },
+    "components": {
+      "support_craft": [{ "id": "as-rf-1", "type": "recon", "quality": "advanced", "count": 4 }]
+    }
+  },
+  {
+    "id": "as-ewac-wing",
+    "name": "电子战预警队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.support",
+    "stats": { "maxHp": 65, "maxOrg": 78, "softAttack": 0, "hardAttack": 0, "airAttack": 5, "defense": 8, "speed": 2500, "attackRange": 600, "hardness": 0.04 },
+    "components": {
+      "support_craft": [{ "id": "as-ew-1", "type": "electronic_warfare", "quality": "advanced", "count": 3 }]
+    }
+  },
+  {
+    "id": "as-transport-wing",
+    "name": "运输飞行队",
+    "branchId": "aerospace",
+    "categoryId": "aerospace.support",
+    "stats": { "maxHp": 60, "maxOrg": 70, "softAttack": 0, "hardAttack": 0, "airAttack": 0, "defense": 6, "speed": 2000, "attackRange": 8000, "hardness": 0.04 },
+    "components": {
+      "support_craft": [{ "id": "as-tp-1", "type": "transport", "quality": "standard", "count": 6 }]
+    }
+  }
+]
+
